@@ -1,5 +1,5 @@
 {
-  "name": "ldjson-to-couchdb",
+  "name": "metalsmith-related",
   "description": "A Metalsmith plugin that shows related documents for each document in a collection",
   "version": "0.0.0",
   "author": "Radek Stepan <dev@radekstepan.com>",
