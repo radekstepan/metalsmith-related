@@ -2,7 +2,7 @@
 
 A [Metalsmith](http://www.metalsmith.io/) plugin that shows related documents for each document in a collection.
 
-![Build Status](http://img.shields.io/codeship/????????????.svg?style=flat)
+![Build Status](http://img.shields.io/codeship/0ac46b40-5fa8-0132-2efc-3643fcd47fc7.svg?style=flat)
 [![Dependencies](http://img.shields.io/david/radekstepan/metalsmith-related.svg?style=flat)](https://david-dm.org/radekstepan/metalsmith-related)
 [![License](http://img.shields.io/badge/license-AGPL--3.0-red.svg?style=flat)](LICENSE)
 
