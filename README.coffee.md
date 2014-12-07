@@ -24,6 +24,7 @@ Metalsmith(__dirname)
   'terms': 5
   'max': 5
   'pattern': 'posts/**/*.md'
+  'text': (doc) -> String doc.contents
 }) )
 .use( do markdown )
 .build(do done)
@@ -32,6 +33,8 @@ Metalsmith(__dirname)
 You can specify which documents (like posts) will get processed, by providing a [glob](https://github.com/isaacs/minimatch) in the `pattern` option.
 
 The option `terms` defines how many top terms will be used for each document to find its similar documents. Specifying `max` puts a cap on the total number of related articles we will return.
+
+Passing the `text` function you can decide how to format text on the document for analysis.
 
 You can now access related documents under the `related` key as an array.
 
@@ -61,6 +64,7 @@ These are the options that you can override, by default we are looking for markd
       opts.pattern ?= '**/*.md'
       opts.max ?= 5
       opts.terms ?= 5
+      opts.text ?= (doc) -> String doc.contents
 
       mm = new Minimatch opts.pattern
 
@@ -71,9 +75,9 @@ These are the options that you can override, by default we are looking for markd
 
 Save all matching files into the index.
 
-        for key, val of files when mm.match key
+        for key, doc of files when mm.match key
           index.push key
-          tfidf.addDocument String val.contents
+          tfidf.addDocument opts.text doc
 
 And for each document in the index.
 
