@@ -22,6 +22,7 @@ related     = require 'metalsmith-related'
 Metalsmith(__dirname)
 .use( related({
   'terms': 5
+  'max': 5
   'pattern': 'posts/**/*.md'
 }) )
 .use( do markdown )
@@ -30,7 +31,7 @@ Metalsmith(__dirname)
 
 You can specify which documents (like posts) will get processed, by providing a [glob](https://github.com/isaacs/minimatch) in the `pattern` option.
 
-The option `terms` defines how many top terms will be used for each document to find its similar documents.
+The option `terms` defines how many top terms will be used for each document to find its similar documents. Specifying `max` puts a cap on the total number of related articles we will return.
 
 You can now access related documents under the `related` key as an array.
 
@@ -58,6 +59,7 @@ We depend on the globbing library and [natural's term frequency–inverse docume
 These are the options that you can override, by default we are looking for markdown documents and the top `5` terms.
 
       opts.pattern ?= '**/*.md'
+      opts.max ?= 5
       opts.terms ?= 5
 
       mm = new Minimatch opts.pattern
@@ -88,6 +90,10 @@ Save only the top ones.
 Find us similar documents with these terms.
 
           related = ( files[index[j]] for freq, j in tfidf.tfidfs top when j isnt i and freq > 0 )
+
+Only keep `max` many.
+
+          related = related[ 0...Math.min opts.max, related.length ]
 
 And save them under the `related` key.
 
