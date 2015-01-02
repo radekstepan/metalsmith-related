@@ -100,6 +100,7 @@ Find us similar documents with these terms and sort based on frequency.
           .sortBy('freq')
           .pluck('j')
           .value()
+          .reverse()
           .map (j) -> files[index[j]]
 
 And save `max` many under the `related` key.

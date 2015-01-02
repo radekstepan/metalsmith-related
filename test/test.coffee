@@ -16,10 +16,10 @@ module.exports =
     rel = related {}
 
     rel d, null, ->
-      assert.deepEqual _.pluck(d['1.md'].related, 'title'), [ '3', '4' ]
+      assert.deepEqual _.pluck(d['1.md'].related, 'title'), [ '4', '3' ]
       assert.deepEqual _.pluck(d['2.md'].related, 'title'), [ '3' ]
-      assert.deepEqual _.pluck(d['3.md'].related, 'title'), [ '1', '4', '2' ]
-      assert.deepEqual _.pluck(d['4.md'].related, 'title'), [ '1', '3' ]
+      assert.deepEqual _.pluck(d['3.md'].related, 'title'), [ '2', '4', '1' ]
+      assert.deepEqual _.pluck(d['4.md'].related, 'title'), [ '3', '1' ]
 
       do done
 
@@ -31,7 +31,7 @@ module.exports =
     rel d, null, ->
       assert.deepEqual _.pluck(d['1.md'].related, 'title'), [ '4' ]
       assert.deepEqual _.pluck(d['2.md'].related, 'title'), [ '3' ]
-      assert.deepEqual _.pluck(d['3.md'].related, 'title'), [ '4', '2' ]
+      assert.deepEqual _.pluck(d['3.md'].related, 'title'), [ '2', '4' ]
       assert.deepEqual _.pluck(d['4.md'].related, 'title'), [ ]
 
       do done
