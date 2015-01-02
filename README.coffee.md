@@ -56,6 +56,7 @@ We depend on the globbing library and [natural's term frequency–inverse docume
 
     { Minimatch } = require 'minimatch'
     { TfIdf }     = require 'natural'
+    _             = require 'lodash'
 
     module.exports = (opts) ->
       opts ?= {}
@@ -93,17 +94,17 @@ Save only the top ones.
 
           top = ( term for { term } in terms[ 0...Math.min opts.terms, terms.length ] )
 
-Find us similar documents with these terms.
+Find us similar documents with these terms and sort based on frequency.
 
-          related = ( files[index[j]] for freq, j in tfidf.tfidfs top when j isnt i and freq > opts.threshold )
+          related = _( { freq, j } for freq, j in tfidf.tfidfs top when j isnt i and freq > opts.threshold )
+          .sortBy('freq')
+          .pluck('j')
+          .value()
+          .map (j) -> files[index[j]]
 
-Only keep `max` many.
+And save `max` many under the `related` key.
 
-          related = related[ 0...Math.min opts.max, related.length ]
-
-And save them under the `related` key.
-
-          files[index[i]].related = related if related.length
+          files[index[i]].related = related[ 0...Math.min opts.max, related.length ] if related.length
 
 All done in sync.
 
