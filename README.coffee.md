@@ -23,6 +23,7 @@ Metalsmith(__dirname)
 .use( related({
   'terms': 5
   'max': 5
+  'threshold': 0
   'pattern': 'posts/**/*.md'
   'text': (doc) -> String doc.contents
 }) )
@@ -32,7 +33,7 @@ Metalsmith(__dirname)
 
 You can specify which documents (like posts) will get processed, by providing a [glob](https://github.com/isaacs/minimatch) in the `pattern` option.
 
-The option `terms` defines how many top terms will be used for each document to find its similar documents. Specifying `max` puts a cap on the total number of related articles we will return.
+The option `terms` defines how many top terms will be used for each document to find its similar documents. Specifying `max` puts a cap on the total number of related articles we will return. Only documents whose importance is higher than `threshold` will be included.
 
 Passing the `text` function you can decide how to format text on the document for analysis.
 
@@ -64,6 +65,7 @@ These are the options that you can override, by default we are looking for markd
       opts.pattern ?= '**/*.md'
       opts.max ?= 5
       opts.terms ?= 5
+      opts.threshold ?= 0
       opts.text ?= (doc) -> String doc.contents
 
       mm = new Minimatch opts.pattern
@@ -93,7 +95,7 @@ Save only the top ones.
 
 Find us similar documents with these terms.
 
-          related = ( files[index[j]] for freq, j in tfidf.tfidfs top when j isnt i and freq > 0 )
+          related = ( files[index[j]] for freq, j in tfidf.tfidfs top when j isnt i and freq > opts.threshold )
 
 Only keep `max` many.
 
