@@ -1,4 +1,4 @@
-#metalsmith-related
+# metalsmith-related
 
 A [Metalsmith](http://www.metalsmith.io/) plugin that shows related documents for each document in a collection.
 
@@ -6,7 +6,7 @@ A [Metalsmith](http://www.metalsmith.io/) plugin that shows related documents fo
 [![Dependencies](http://img.shields.io/david/radekstepan/metalsmith-related.svg?style=flat)](https://david-dm.org/radekstepan/metalsmith-related)
 [![License](http://img.shields.io/badge/license-AGPL--3.0-red.svg?style=flat)](LICENSE)
 
-##Use
+## Use
 
 ```bash
 $ npm install metalsmith-related
@@ -50,7 +50,7 @@ You can now access related documents under the `related` key as an array.
 </ul>
 ```
 
-##Source
+## Source
 
 We depend on the globbing library and [natural's term frequency–inverse document frequency](https://github.com/NaturalNode/natural#tf-idf).
 
