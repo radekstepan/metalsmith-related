@@ -7,7 +7,7 @@
   "dependencies": {
     "coffee-script": "^1.8.0",
     "lodash": "^2.4.1",
-    "minimatch": "^2.0.1",
+    "minimatch": "^3.0.2",
     "natural": "^0.1.29"
   },
   "devDependencies": {
