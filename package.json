@@ -1,7 +1,7 @@
 {
   "name": "metalsmith-related",
   "description": "A Metalsmith plugin that shows related documents for each document in a collection",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Radek Stepan <dev@radekstepan.com>",
   "license": "AGPL-3.0",
   "dependencies": {
