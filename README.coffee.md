@@ -2,9 +2,11 @@
 
 A [Metalsmith](http://www.metalsmith.io/) plugin that shows related documents for each document in a collection.
 
-![Build Status](http://img.shields.io/codeship/0ac46b40-5fa8-0132-2efc-3643fcd47fc7.svg?style=flat)
+[![Build Status](https://img.shields.io/travis/radekstepan/metalsmith-related/master.svg?style=flat)](https://travis-ci.org/radekstepan/metalsmith-related)
 [![Dependencies](http://img.shields.io/david/radekstepan/metalsmith-related.svg?style=flat)](https://david-dm.org/radekstepan/metalsmith-related)
 [![License](http://img.shields.io/badge/license-AGPL--3.0-red.svg?style=flat)](LICENSE)
+
+*Uses [Natural](https://github.com/NaturalNode/natural#natural) v0.5.1*
 
 ## Use
 
@@ -98,7 +100,7 @@ Find us similar documents with these terms and sort based on frequency.
 
           related = _( { freq, j } for freq, j in tfidf.tfidfs top when j isnt i and freq > opts.threshold )
           .sortBy('freq')
-          .pluck('j')
+          .map('j')
           .value()
           .reverse()
           .map (j) -> files[index[j]]
